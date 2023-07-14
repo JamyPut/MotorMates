@@ -2,37 +2,37 @@ package com.MotorMates.MotorMates.entity;
 
 public class Event {
 
-    private String place;
-    private String visitors;
-    private String date;
+    private String location;
+    private int visitors;
+    private String eventDate;
 
-    public String getPlace() {
-        return place;
+    public String getLocation() {
+        return location;
     }
 
-    public void setPlace(String place) {
-        this.place = place;
+    public void setLocation(String location) {
+        this.location = location;
     }
 
-    public String getVisitors() {
+    public int getVisitors() {
         return visitors;
     }
 
-    public void setVisitors(String visitors) {
+    public void setVisitors(int visitors) {
         this.visitors = visitors;
     }
 
-    public String getDate() {
-        return date;
+    public String getEventDate() {
+        return eventDate;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setEventDate(String eventDate) {
+        this.eventDate = eventDate;
     }
 
-    public Event(String place, String visitors, String date) {
-        setPlace(place);
+    public Event(String location, int visitors, String eventDate) {
+        setLocation(location);
         setVisitors(visitors);
-        setDate(date);
+        setEventDate(eventDate);
     }
 }
