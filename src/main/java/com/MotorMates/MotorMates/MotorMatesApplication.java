@@ -22,7 +22,7 @@ public class MotorMatesApplication {
 	@Bean
 	CommandLineRunner commandLineRunner(RiderRepository riderRepository){
 		return args -> {
-			Rider james = new Rider("James", "james123", "james@bond.com", "Racer");
+			Rider james = new Rider("James", "james123", "james@bond.com", "Racer", 4234.986, 60);
 			riderRepository.save(james);
 		};
 	}

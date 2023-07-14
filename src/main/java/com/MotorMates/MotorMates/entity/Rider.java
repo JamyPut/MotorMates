@@ -52,6 +52,14 @@ public class Rider {
             columnDefinition = "TEXT"
     )
     private String typeOfRider;
+    @Column(
+            name = "total_distance"
+    )
+    private double totalDistance;
+    @Column(
+            name = "average_speed"
+    )
+    private double averageSpeed;
 
     public Long getId() {
         return id;
@@ -61,11 +69,11 @@ public class Rider {
         this.id = id;
     }
 
-    public String getUserName() {
+    public String getUsername() {
         return username;
     }
 
-    public void setUserName(String userName) {
+    public void setUsername(String userName) {
         this.username = userName;
     }
 
@@ -93,11 +101,30 @@ public class Rider {
         this.typeOfRider = typeOfRider;
     }
 
-    public Rider(String username, String password, String email, String typeOfRider) {
-        setUserName(username);
+    public double getTotalDistance() {
+        return totalDistance;
+    }
+
+    public void setTotalDistance(double totalDistance) {
+        this.totalDistance = totalDistance;
+    }
+
+    public double getAverageSpeed() {
+        return averageSpeed;
+    }
+
+    public void setAverageSpeed(double averageSpeed) {
+        this.averageSpeed = averageSpeed;
+    }
+
+
+    public Rider(String username, String password, String email, String typeOfRider, double totalDistance, double averageSpeed) {
+        setUsername(username);
         setPassword(password);
         setEmail(email);
         setTypeOfRider(typeOfRider);
+        setTotalDistance(totalDistance);
+        setAverageSpeed(averageSpeed);
     }
     public Rider(){
 
