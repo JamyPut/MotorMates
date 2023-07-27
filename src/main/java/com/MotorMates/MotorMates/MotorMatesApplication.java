@@ -1,5 +1,7 @@
 package com.MotorMates.MotorMates;
 
+import com.MotorMates.MotorMates.entity.Event;
+import com.MotorMates.MotorMates.repository.EventRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -24,6 +26,13 @@ public class MotorMatesApplication {
 		return args -> {
 			Rider james = new Rider("James", "james123", "james@bond.com", "Racer", 4234.986, 60);
 			riderRepository.save(james);
+		};
+	}
+	@Bean
+	CommandLineRunner commandLineRunner(EventRepository eventRepository){
+		return args -> {
+			Event dutchRideout = new Event("Nuenen", 2000, "12 juli 2023");
+			eventRepository.save(dutchRideout);
 		};
 	}
 

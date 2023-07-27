@@ -2,9 +2,6 @@ package com.MotorMates.MotorMates.entity;
 
 import jakarta.persistence.*;
 
-import javax.management.relation.Role;
-
-import java.util.ArrayList;
 
 import static jakarta.persistence.GenerationType.SEQUENCE;
 
@@ -133,9 +130,4 @@ public class Rider {
     public Rider(){
 
     }
-
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(name = "security_roles", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
-    private List<Roles> roles = new ArrayList<>();
 }
