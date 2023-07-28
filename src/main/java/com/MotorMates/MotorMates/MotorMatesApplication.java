@@ -1,7 +1,7 @@
 package com.MotorMates.MotorMates;
 
 import com.MotorMates.MotorMates.entity.Event;
-import com.MotorMates.MotorMates.repository.EventRepository;
+//import com.MotorMates.MotorMates.repository.EventRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
