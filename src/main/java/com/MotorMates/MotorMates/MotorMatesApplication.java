@@ -6,6 +6,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.web.bind.annotation.GetMapping;
 import com.MotorMates.MotorMates.repository.RiderRepository;
 import com.MotorMates.MotorMates.entity.Rider;
@@ -28,12 +29,14 @@ public class MotorMatesApplication {
 			riderRepository.save(james);
 		};
 	}
-	@Bean
-	CommandLineRunner commandLineRunner(EventRepository eventRepository){
-		return args -> {
-			Event dutchRideout = new Event("Nuenen", 2000, "12 juli 2023");
-			eventRepository.save(dutchRideout);
-		};
-	}
+
+	// je kan geen 2 beans tegelijk hebben. nog niet opgelost...
+//	@Bean
+//	CommandLineRunner commandLineRunner(EventRepository eventRepository){
+//		return args -> {
+//			Event dutchRideout = new Event("Nuenen", 2000, "12 juli 2023");
+//			eventRepository.save(dutchRideout);
+//		};
+//	}
 
 }
