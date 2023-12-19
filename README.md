@@ -24,7 +24,7 @@ Postman om endpoints te kunnen checken
 https://www.postman.com/downloads/
 
 Clone het project van de volgende github link:  
-https://github.com/dbaldew/sfmoviehouse-backend
+https://github.com/JamyPut/MotorMates
 
 
 In Intellij kan het project geopend worden.  
