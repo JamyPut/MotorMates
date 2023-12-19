@@ -44,15 +44,18 @@ Maven zal het project vervolgens bijwerken.
 
 
 Open vervolgens het bestand application.properties  
-Vervang de volgende regels met onderstaande:
+en plak de volgende tekst daarin
 
 
+***
 spring.datasource.url=jdbc:postgresql://localhost:5432/motormates
 spring.datasource.username=postgres
-spring.datasource.password=postgres  
+spring.datasource.password=postgres123
+spring.jpa.hibernate.ddl-auto=create-drop
+spring.jpa.show-sql=true
 spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
 spring.jpa.properties.hibernate.format_sql=true
-
+***
 
 Maak met deze gegevens een datasource aan in Intellij waarmee de verbinding met een postgress database kan worden gelegd  
 
