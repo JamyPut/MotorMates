@@ -23,7 +23,11 @@ public class MotorMatesApplication {
 	}
 	@GetMapping(path = "/")
 	private String hello(){
-		return "Hello World, and welcome to the motormates Forum";
+		return "Hello World, and welcome to the motormates forum";
+	}
+	@GetMapping(path = "/2")
+	private List<String> hello2(){
+		return List.of("Hello", "World");
 	}
 
 	@Bean
