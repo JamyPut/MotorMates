@@ -10,23 +10,30 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.bind.annotation.GetMapping;
 import com.MotorMates.MotorMates.repository.RiderRepository;
 import com.MotorMates.MotorMates.entity.Rider;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @SpringBootApplication
+@RestController
 public class MotorMatesApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(MotorMatesApplication.class, args);
 	}
 	@GetMapping(path = "/")
-	public String hello(){
-		return "Hello World";
+	private String hello(){
+		return "Hello World, and welcome to the motormates Forum";
 	}
 
 	@Bean
 	CommandLineRunner commandLineRunner(RiderRepository riderRepository){
 		return args -> {
 			Rider james = new Rider("James", "james123", "james@bond.com", "Racer", 4234.986, 60);
-			riderRepository.save(james);
+			Rider joanna = new Rider("Joanna", "joanna123", "joanna@live.com", "Tourer", 423.98, 40);
+			riderRepository.saveAll(
+					List.of(james, joanna)
+			);
 		};
 	}
 
