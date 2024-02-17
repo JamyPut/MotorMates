@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class RiderService {
@@ -22,7 +23,12 @@ public class RiderService {
     }
 
     public void addNewRider(Rider rider) {
-        System.out.println(rider);
+        Optional<Rider> riderByEmail= riderRepository
+                .findRiderByEmail(rider.getEmail());
+        if (riderByEmail.isPresent()){
+            throw new IllegalStateException("User already exists...");
+        }
+        riderRepository.save(rider);
 
     }
 }
