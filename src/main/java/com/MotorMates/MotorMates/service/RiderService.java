@@ -1,20 +1,23 @@
 package com.MotorMates.MotorMates.service;
 
 import com.MotorMates.MotorMates.entity.Rider;
+import com.MotorMates.MotorMates.repository.RiderRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class RiderService {
+
+    private final RiderRepository riderRepository;
+
+    @Autowired
+    public RiderService(RiderRepository riderRepository) {
+        this.riderRepository = riderRepository;
+    }
+
     public List<Rider> getRiders(){
-        return List.of(
-                new Rider("James",
-                        "james123",
-                        "james@bond.com",
-                        "Racer",
-                        4234.986,
-                        60)
-        );
+        return riderRepository.findAll();
     }
 }
