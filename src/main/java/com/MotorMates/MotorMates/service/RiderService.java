@@ -26,9 +26,17 @@ public class RiderService {
         Optional<Rider> riderByEmail= riderRepository
                 .findRiderByEmail(rider.getEmail());
         if (riderByEmail.isPresent()){
-            throw new IllegalStateException("User already exists...");
+            throw new IllegalStateException("Rider already exists...");
         }
         riderRepository.save(rider);
+    }
 
+    public void deleteRider(Long riderId){
+        boolean exists = riderRepository.existsById(riderId);
+        if (!exists){
+            throw new IllegalStateException("Rider does not exist");
+//            throw new IllegalStateException("Rider: " + riderId + " does not exists.")
+        }
+        riderRepository.deleteById(riderId);
     }
 }

@@ -27,4 +27,9 @@ public class RiderController {
         riderService.addNewRider(rider);
     }
 
+    @DeleteMapping(path = "{riderId}")
+    public void deleteRider(@PathVariable("riderId") Long riderId){
+        riderService.deleteRider(riderId);
+    }
+
 }
