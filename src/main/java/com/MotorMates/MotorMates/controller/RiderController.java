@@ -3,9 +3,7 @@ package com.MotorMates.MotorMates.controller;
 import com.MotorMates.MotorMates.entity.Rider;
 import com.MotorMates.MotorMates.service.RiderService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -22,6 +20,11 @@ public class RiderController {
     @GetMapping
     public List<Rider>  getRider(){
         return riderService.getRiders();
+    }
+
+    @PostMapping
+    public void newRider(@RequestBody Rider rider){
+        riderService.addNewRider(rider);
     }
 
 }

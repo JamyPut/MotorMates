@@ -20,4 +20,9 @@ public class RiderService {
     public List<Rider> getRiders(){
         return riderRepository.findAll();
     }
+
+    public void addNewRider(Rider rider) {
+        System.out.println(rider);
+
+    }
 }

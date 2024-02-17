@@ -130,4 +130,17 @@ public class Rider {
     public Rider(){
 
     }
+
+    @Override
+    public String toString() {
+        return "Rider{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                ", typeOfRider='" + typeOfRider + '\'' +
+                ", totalDistance=" + totalDistance +
+                ", averageSpeed=" + averageSpeed +
+                '}';
+    }
 }
