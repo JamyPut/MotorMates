@@ -19,16 +19,14 @@ public class RiderConfig {
                     "james123",
                     "james@bond.com",
                     "Racer",
-                    4234.986,
-                    60
+                    4234.986
             );
             Rider joanna = new Rider(
                     "Joanna",
                     "Joanna123",
                     "Joanna@bond.com",
                     "Tourer",
-                    4125,
-                    45
+                    4125
             );
 
             repository.saveAll(

@@ -32,4 +32,15 @@ public class RiderController {
         riderService.deleteRider(riderId);
     }
 
+    @PutMapping(path = "{riderId}")
+    public void updateRider(
+            @PathVariable("riderId") Long riderId,
+            @RequestParam(required = false) String username,
+            @RequestParam (required = false) String email,
+            @RequestParam (required = false) String typeOfRider,
+            @RequestParam (required = false, defaultValue = "0") double totalDistance
+    ) {
+        riderService.updateRider(riderId, username, email, typeOfRider, totalDistance);
+    }
+
 }
