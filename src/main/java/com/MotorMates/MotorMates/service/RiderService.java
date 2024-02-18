@@ -52,8 +52,8 @@ public class RiderService {
         Rider rider = riderRepository.findById(riderId)
                 .orElseThrow(() -> new IllegalStateException("RiderId: " + riderId + " not found."));
 
-//        Using .isEmpty stops the put request from working. .length() > 0 works without issue.
-        if (username != null && username.length() > 0 && !Objects.equals(rider.getUsername(), username)) {
+
+        if (username != null && !username.isEmpty() && !Objects.equals(rider.getUsername(), username)) {
             Optional<Rider> riderByUsername = riderRepository
                     .findRiderByUsername(username);
             if (riderByUsername.isPresent()) {
@@ -62,7 +62,7 @@ public class RiderService {
             rider.setUsername(username);
         }
 
-        if (email != null && email.length() > 0 && !Objects.equals(rider.getEmail(), email)){
+        if (email != null && !email.isEmpty() && !Objects.equals(rider.getEmail(), email)){
             Optional<Rider> riderByEmail = riderRepository
                     .findRiderByEmail(email);
             if (riderByEmail.isPresent()){
@@ -71,7 +71,7 @@ public class RiderService {
             rider.setEmail(email);
         }
 
-        if (typeOfRider != null && typeOfRider.length() > 0 && !Objects.equals(rider.getTypeOfRider(), typeOfRider)){
+        if (typeOfRider != null && !typeOfRider.isEmpty() && !Objects.equals(rider.getTypeOfRider(), typeOfRider)){
             rider.setTypeOfRider(typeOfRider);
         }
 
