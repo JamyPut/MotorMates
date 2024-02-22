@@ -1,7 +1,29 @@
 package com.MotorMates.MotorMates.entity;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.SequenceGenerator;
+
+import static jakarta.persistence.GenerationType.SEQUENCE;
+
 public class Event {
 
+    @Id
+    @SequenceGenerator(
+            name = "event_sequence",
+            sequenceName = "event_sequence",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = SEQUENCE,
+            generator = "event_sequence"
+    )
+    @Column(
+            name = "id",
+            updatable = false
+    )
+    private Long id;
     private String location;
     private int visitors;
     private String eventDate;
