@@ -1,9 +1,11 @@
 package com.MotorMates.MotorMates.controller;
 
+import com.MotorMates.MotorMates.entity.RouteFile;
 import com.MotorMates.MotorMates.message.ResponseRouteFile;
 import com.MotorMates.MotorMates.message.ResponseRouteMessage;
 import com.MotorMates.MotorMates.service.RouteFileStorageService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -53,6 +55,15 @@ public class RouteFileController {
         }).toList();
 
         return ResponseEntity.status(HttpStatus.OK).body(files);
+    }
+
+    @GetMapping("/routes/{id}")
+    public ResponseEntity<byte[]> getRouteFile(@PathVariable String id) {
+        RouteFile routeFile = storageService.getRouteFile(id);
+
+        return ResponseEntity.ok()
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + routeFile.getRouteFileName() + "\"")
+                .body(routeFile.getData());
     }
 
 }
