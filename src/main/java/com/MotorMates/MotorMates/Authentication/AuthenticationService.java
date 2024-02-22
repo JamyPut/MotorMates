@@ -4,7 +4,6 @@ import com.MotorMates.MotorMates.entity.RegisteredUser;
 import com.MotorMates.MotorMates.entity.Role;
 import com.MotorMates.MotorMates.repository.RegisteredUserRepository;
 import com.MotorMates.MotorMates.service.JwtService;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
