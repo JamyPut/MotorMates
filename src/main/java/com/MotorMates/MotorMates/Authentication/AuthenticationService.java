@@ -5,21 +5,43 @@ import com.MotorMates.MotorMates.entity.Role;
 import com.MotorMates.MotorMates.repository.RegisteredUserRepository;
 import com.MotorMates.MotorMates.service.JwtService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
-@RequiredArgsConstructor
 public class AuthenticationService {
 
     private final RegisteredUserRepository repository;
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
+    private final RegisteredUserRepository registeredUserRepository;
+
+    @Autowired
+    public AuthenticationService(RegisteredUserRepository repository, PasswordEncoder passwordEncoder, JwtService jwtService, AuthenticationManager authenticationManager, RegisteredUserRepository registeredUserRepository) {
+        this.repository = repository;
+        this.passwordEncoder = passwordEncoder;
+        this.jwtService = jwtService;
+        this.authenticationManager = authenticationManager;
+        this.registeredUserRepository = registeredUserRepository;
+    }
 
     public AuthenticationResponse register(RegisterRequest request) {
+        Optional<RegisteredUser> userByEmail = registeredUserRepository
+                .findByLoginEmail(request.getLoginMail());
+        Optional<RegisteredUser> userByLoginName = registeredUserRepository
+                .findByLoginName(request.getLoginName());
+        if (userByEmail.isPresent()){
+            throw new IllegalStateException("User email already exists...");
+        }
+        else if (userByLoginName.isPresent()){
+            throw new IllegalStateException("Username already exists...");
+        }
         var registeredUser = RegisteredUser.builder()
                 .loginName(request.getLoginName())
                 .loginEmail(request.getLoginMail())
