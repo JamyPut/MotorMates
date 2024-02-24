@@ -14,11 +14,25 @@ import org.springframework.web.bind.annotation.RestController;
 
    private final AuthenticationService service;
 
-   @PostMapping("/register")
-    public ResponseEntity<AuthenticationResponse> register(
+   @PostMapping("/registerUser")
+    public ResponseEntity<AuthenticationResponse> registerUser(
             @RequestBody RegisterRequest request
     ){
-      return ResponseEntity.ok(service.register(request));
+      return ResponseEntity.ok(service.registerUser(request));
+    }
+
+    @PostMapping("/registerOrganizer")
+    public ResponseEntity<AuthenticationResponse> registerOrganizer(
+            @RequestBody RegisterRequest request
+    ){
+        return ResponseEntity.ok(service.registerOrganizer(request));
+    }
+
+    @PostMapping("/registerAdmin")
+    public ResponseEntity<AuthenticationResponse> registerAdmin(
+            @RequestBody RegisterRequest request
+    ){
+        return ResponseEntity.ok(service.registerAdmin(request));
     }
 
     @PostMapping("/authenticate")

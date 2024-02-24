@@ -30,7 +30,7 @@ public class AuthenticationService {
         this.registeredUserRepository = registeredUserRepository;
     }
 
-    public AuthenticationResponse register(RegisterRequest request) {
+    private void RegisterByEmail(RegisterRequest request) {
         Optional<RegisteredUser> userByEmail = registeredUserRepository
                 .findByLoginEmail(request.getLoginMail());
         Optional<RegisteredUser> userByLoginName = registeredUserRepository
@@ -41,11 +41,45 @@ public class AuthenticationService {
         else if (userByLoginName.isPresent()){
             throw new IllegalStateException("Username already exists...");
         }
+    }
+
+    public AuthenticationResponse registerUser(RegisterRequest request) {
+        RegisterByEmail(request);
         var registeredUser = RegisteredUser.builder()
                 .loginName(request.getLoginName())
                 .loginEmail(request.getLoginMail())
                 .loginPassword(passwordEncoder.encode(request.getLoginPassword()))
                 .role(Role.RIDER)
+                .build();
+        repository.save(registeredUser);
+        var jwtToken = jwtService.generateToken(registeredUser);
+        return AuthenticationResponse.builder()
+                .token(jwtToken)
+                .build();
+    }
+
+    public AuthenticationResponse registerOrganizer(RegisterRequest request) {
+        RegisterByEmail(request);
+        var registeredUser = RegisteredUser.builder()
+                .loginName(request.getLoginName())
+                .loginEmail(request.getLoginMail())
+                .loginPassword(passwordEncoder.encode(request.getLoginPassword()))
+                .role(Role.ORGANIZER)
+                .build();
+        repository.save(registeredUser);
+        var jwtToken = jwtService.generateToken(registeredUser);
+        return AuthenticationResponse.builder()
+                .token(jwtToken)
+                .build();
+    }
+
+    public AuthenticationResponse registerAdmin(RegisterRequest request) {
+        RegisterByEmail(request);
+        var registeredUser = RegisteredUser.builder()
+                .loginName(request.getLoginName())
+                .loginEmail(request.getLoginMail())
+                .loginPassword(passwordEncoder.encode(request.getLoginPassword()))
+                .role(Role.ADMIN)
                 .build();
         repository.save(registeredUser);
         var jwtToken = jwtService.generateToken(registeredUser);
