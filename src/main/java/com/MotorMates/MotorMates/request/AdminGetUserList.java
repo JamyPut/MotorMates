@@ -13,7 +13,6 @@ import java.util.List;
 @CrossOrigin
 @RestController
 @RequestMapping("/forum")
-@PreAuthorize("hasRole('ADMIN')")
 public class AdminGetUserList {
 
     private final RegisteredUserRepository repository;

@@ -30,8 +30,7 @@ public class RiderProfileService {
     public void deleteRiderProfile(Long riderProfileId){
         boolean exists = riderProfileRepository.existsById(riderProfileId);
         if (!exists){
-            throw new IllegalStateException("RiderProfile does not exist");
-//            throw new IllegalStateException("RiderProfile: " + riderProfileId + " does not exist.")
+            throw new IllegalStateException("RiderProfile: " + riderProfileId + " does not exist.");
         }
         riderProfileRepository.deleteById(riderProfileId);
     }
@@ -41,26 +40,6 @@ public class RiderProfileService {
         RiderProfile riderProfile = riderProfileRepository.findById(riderProfileId)
                 .orElseThrow(() -> new IllegalStateException("RiderId: " + riderProfileId + " not found."));
 
-
-/*        Updating username and email and checking if name already exists
-
-if (username != null && !username.isEmpty() && !Objects.equals(riderProfile.getUsername(), username)) {
-            Optional<RiderProfile> riderByUsername = riderProfileRepository
-                    .findRiderByUsername(username);
-            if (riderByUsername.isPresent()) {
-                throw new IllegalStateException("RiderProfile already exists and username is taken.");
-            }
-            riderProfile.setUsername(username);
-        }
-
-        if (email != null && !email.isEmpty() && !Objects.equals(riderProfile.getEmail(), email)){
-            Optional<RiderProfile> riderByEmail = riderProfileRepository
-                    .findRiderByEmail(email);
-            if (riderByEmail.isPresent()){
-                throw new IllegalStateException("RiderProfile already exists and email is taken.");
-            }
-            riderProfile.setEmail(email);
-        }*/
 
         if (typeOfRider != null && !typeOfRider.isEmpty() && !Objects.equals(riderProfile.getTypeOfRider(), typeOfRider)){
             riderProfile.setTypeOfRider(typeOfRider);
