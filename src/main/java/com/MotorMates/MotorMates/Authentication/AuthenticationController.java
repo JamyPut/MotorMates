@@ -4,6 +4,7 @@ import com.MotorMates.MotorMates.entity.RegisteredUser;
 import com.MotorMates.MotorMates.repository.RegisteredUserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,7 +15,6 @@ import java.util.List;
  class AuthenticationController {
 
    private final AuthenticationService service;
-   private final RegisteredUserRepository repository;
 
    @PostMapping("/registerUser")
     public ResponseEntity<AuthenticationResponse> registerUser(
@@ -43,7 +43,4 @@ import java.util.List;
     ){
       return ResponseEntity.ok(service.authenticate(request));
     }
-
-    @GetMapping
-    List<RegisteredUser> getRegisteredUsers(){return repository.findAll();}
 }
