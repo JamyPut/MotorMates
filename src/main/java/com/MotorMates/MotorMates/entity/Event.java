@@ -1,12 +1,11 @@
 package com.MotorMates.MotorMates.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.*;
 
 import static jakarta.persistence.GenerationType.SEQUENCE;
 
+@Entity
+@Table
 public class Event {
 
     @Id
@@ -27,6 +26,10 @@ public class Event {
     private String location;
     private int visitors;
     private String eventDate;
+
+    public Event() {
+
+    }
 
     public String getLocation() {
         return location;
