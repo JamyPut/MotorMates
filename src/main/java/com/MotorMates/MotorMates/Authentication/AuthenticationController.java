@@ -1,11 +1,12 @@
 package com.MotorMates.MotorMates.Authentication;
 
+import com.MotorMates.MotorMates.entity.RegisteredUser;
+import com.MotorMates.MotorMates.repository.RegisteredUserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/forum/auth")
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
  class AuthenticationController {
 
    private final AuthenticationService service;
+   private final RegisteredUserRepository repository;
 
    @PostMapping("/registerUser")
     public ResponseEntity<AuthenticationResponse> registerUser(
@@ -41,4 +43,7 @@ import org.springframework.web.bind.annotation.RestController;
     ){
       return ResponseEntity.ok(service.authenticate(request));
     }
+
+    @GetMapping
+    List<RegisteredUser> getRegisteredUsers(){return repository.findAll();}
 }
