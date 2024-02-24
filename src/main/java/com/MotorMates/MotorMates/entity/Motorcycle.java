@@ -47,6 +47,11 @@ public class Motorcycle {
     )
     private int displacement;
 
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "registered_user_id", referencedColumnName = "id")
+    private RegisteredUser registeredUser;
+
     public Long getId() {
         return id;
     }
@@ -91,6 +96,10 @@ public class Motorcycle {
     }
     public Motorcycle() {
 
+    }
+
+    public RegisteredUser getRegisteredUser() {
+        return registeredUser;
     }
 
 

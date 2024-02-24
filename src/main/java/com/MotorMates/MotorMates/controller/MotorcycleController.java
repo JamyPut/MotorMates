@@ -25,4 +25,11 @@ public class MotorcycleController {
     public void newMotorcycle(@RequestBody Motorcycle motorcycle) {
         motorcycleService.addNewMotorcycle(motorcycle);
     }
+
+    @PutMapping("/{motorcycleId}/motorcycle/{registeredUserId}")
+    Motorcycle pairMotorcycleToRegisteredUser(
+            @PathVariable Long motorcycleId,
+            @PathVariable Long registeredUserId
+    ){
+    }
 }
