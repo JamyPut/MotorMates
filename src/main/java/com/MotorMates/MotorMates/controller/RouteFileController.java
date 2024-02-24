@@ -40,7 +40,7 @@ public class RouteFileController {
 
     @GetMapping("/routes")
     public ResponseEntity<List<ResponseRouteFile>> getListFiles(){
-        List<ResponseRouteFile> files = storageService.getAllRoutefiles().map(routeFile -> {
+        List<ResponseRouteFile> files = storageService.getAllRouteFiles().map(routeFile -> {
             String routeFileDownloadUri = ServletUriComponentsBuilder
                     .fromCurrentContextPath()
                     .path("/routes")
@@ -52,7 +52,7 @@ public class RouteFileController {
                     routeFileDownloadUri,
                     routeFile.getType(),
                     routeFile.getData().length);
-        }).toList();
+        }).collect(Collectors.toList());
 
         return ResponseEntity.status(HttpStatus.OK).body(files);
     }

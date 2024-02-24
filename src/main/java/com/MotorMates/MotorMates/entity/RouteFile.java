@@ -9,10 +9,6 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "routefile")
-@Getter
-@Setter
-@ToString
-@NoArgsConstructor
 public class RouteFile {
     @Id
     @UuidGenerator
@@ -23,6 +19,48 @@ public class RouteFile {
 
     @Lob
     private byte[] data;
+
+    public String getRouteFileName() {
+        return routeFileName;
+    }
+
+    public void setRouteFileName(String routeFileName) {
+        this.routeFileName = routeFileName;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public byte[] getData() {
+        return data;
+    }
+
+    public void setData(byte[] data) {
+        this.data = data;
+    }
+
+    public RouteFile(UUID id, String routeFileName, String type, byte[] data) {
+        this.id = id;
+        this.routeFileName = routeFileName;
+        this.type = type;
+        this.data = data;
+    }
+
+    public UUID getId() {
+        return id;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
+    public RouteFile() {
+    }
 
     public RouteFile(String filename, String contentType, byte[] bytes) {
     }

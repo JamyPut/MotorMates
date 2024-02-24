@@ -8,7 +8,10 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.Objects;
+import java.util.Spliterator;
 import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
 
 @Service
 public class RouteFileStorageService {
@@ -16,18 +19,18 @@ public class RouteFileStorageService {
     @Autowired
     private RouteFileRepository routeFileRepository;
 
-    public RouteFile storeRouteFile(MultipartFile file) throws IOException{
-        String filename = StringUtils.cleanPath(file.getOriginalFilename());
+    public void storeRouteFile(MultipartFile file) throws IOException{
+        String filename = StringUtils.cleanPath(Objects.requireNonNull(file.getOriginalFilename()));
         RouteFile routeFile = new RouteFile(filename, file.getContentType(), file.getBytes());
-
-        return routeFileRepository.save(routeFile);
+        routeFileRepository.save(routeFile);
     }
 
     public RouteFile getRouteFile(String id) {
         return routeFileRepository.findById(id).get();
     }
 
-    public Stream<RouteFile> getAllRoutefiles(){
-        return routeFileRepository.findAll().stream();
+    public Stream<RouteFile> getAllRouteFiles(){
+        Spliterator<RouteFile> spliterator = routeFileRepository.findAll().spliterator();
+        return StreamSupport.stream(spliterator, false);
     }
 }
