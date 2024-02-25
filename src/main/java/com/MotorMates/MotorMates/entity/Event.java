@@ -31,6 +31,12 @@ public class Event {
 
     }
 
+    public Event(String location, int visitors, String eventDate) {
+        setLocation(location);
+        setVisitors(visitors);
+        setEventDate(eventDate);
+    }
+
     public String getLocation() {
         return location;
     }
@@ -53,11 +59,5 @@ public class Event {
 
     public void setEventDate(String eventDate) {
         this.eventDate = eventDate;
-    }
-
-    public Event(String location, int visitors, String eventDate) {
-        setLocation(location);
-        setVisitors(visitors);
-        setEventDate(eventDate);
     }
 }

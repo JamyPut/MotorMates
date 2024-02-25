@@ -1,11 +1,9 @@
 package com.MotorMates.MotorMates.configuration;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.boot.autoconfigure.security.reactive.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;
-import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -28,7 +26,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests()
                 .requestMatchers("/forum/auth/**")
                 .permitAll()
-                .requestMatchers("/forum/riderprofile","/forum/riderprofile/**", "/forum/routes", "/forum/routes/**", "/forum/events", "/forum/motorcycle").hasAnyAuthority("RIDER","ADMIN","ORGANIZER")
+                .requestMatchers("/forum/riderprofile", "/forum/riderprofile/**", "/forum/routes", "/forum/routes/**", "/forum/events", "/forum/motorcycle").hasAnyAuthority("RIDER", "ADMIN", "ORGANIZER")
                 .requestMatchers("/forum/events/create").hasAuthority("ORGANIZER")
                 .requestMatchers("/forum/admin/registeredUsers").hasAuthority("ADMIN")
                 .and()

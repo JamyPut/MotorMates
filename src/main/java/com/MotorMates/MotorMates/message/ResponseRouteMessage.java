@@ -6,9 +6,9 @@ import lombok.Setter;
 @Getter
 @Setter
 public class ResponseRouteMessage {
+    private String message;
+
     public ResponseRouteMessage(String message) {
         this.message = message;
     }
-
-    private String message;
 }

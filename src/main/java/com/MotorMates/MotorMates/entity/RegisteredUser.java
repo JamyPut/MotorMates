@@ -42,6 +42,9 @@ public class RegisteredUser implements UserDetails {
 
     @Enumerated(EnumType.STRING)
     private Role role;
+    @JsonIgnore
+    @OneToMany(mappedBy = "registeredUser")
+    private Set<Motorcycle> motorcycles = new HashSet<>();
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "rider_profile_id")
@@ -49,10 +52,6 @@ public class RegisteredUser implements UserDetails {
     public Set<Motorcycle> getMotorcycles() {
         return motorcycles;
     }
-
-    @JsonIgnore
-    @OneToMany(mappedBy = "registeredUser")
-    private Set<Motorcycle> motorcycles = new HashSet<>();
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

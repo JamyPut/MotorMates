@@ -36,6 +36,15 @@ public class RiderProfile {
     )
     private double totalDistance;
 
+    public RiderProfile(String typeOfRider, double totalDistance) {
+        setTypeOfRider(typeOfRider);
+        setTotalDistance(totalDistance);
+    }
+
+    public RiderProfile() {
+
+    }
+
     public Long getId() {
         return id;
     }
@@ -58,16 +67,6 @@ public class RiderProfile {
 
     public void setTotalDistance(double totalDistance) {
         this.totalDistance = totalDistance;
-    }
-
-
-    public RiderProfile(String typeOfRider, double totalDistance) {
-        setTypeOfRider(typeOfRider);
-        setTotalDistance(totalDistance);
-    }
-
-    public RiderProfile() {
-
     }
 
     @Override

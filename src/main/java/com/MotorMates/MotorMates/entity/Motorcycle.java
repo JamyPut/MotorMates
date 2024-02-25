@@ -52,46 +52,6 @@ public class Motorcycle {
     @JoinColumn(name = "registered_user_id", referencedColumnName = "id")
     private RegisteredUser registeredUser;
 
-    public Long getId() {
-        return id;
-    }
-
-    public String getBrand() {
-        return brand;
-    }
-
-    public String getModel() {
-        return model;
-    }
-
-    public int getYear() {
-        return year;
-    }
-
-    public int getDisplacement() {
-        return displacement;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public void setBrand(String brand) {
-        this.brand = brand;
-    }
-
-    public void setModel(String model) {
-        this.model = model;
-    }
-
-    public void setYear(int year) {
-        this.year = year;
-    }
-
-    public void setDisplacement(int displacement) {
-        this.displacement = displacement;
-    }
-
     public Motorcycle(String brand, String model, int year, int displacement) {
         setBrand(brand);
         setModel(model);
@@ -101,6 +61,46 @@ public class Motorcycle {
 
     public Motorcycle() {
 
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getBrand() {
+        return brand;
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
+    }
+
+    public int getDisplacement() {
+        return displacement;
+    }
+
+    public void setDisplacement(int displacement) {
+        this.displacement = displacement;
     }
 
     public RegisteredUser getRegisteredUser() {

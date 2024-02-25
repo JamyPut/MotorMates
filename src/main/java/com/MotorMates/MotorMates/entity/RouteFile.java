@@ -21,6 +21,19 @@ public class RouteFile {
     @Lob
     private byte[] data;
 
+    public RouteFile(UUID id, String routeFileName, String type, byte[] data) {
+        this.id = id;
+        this.routeFileName = routeFileName;
+        this.type = type;
+        this.data = data;
+    }
+
+    public RouteFile() {
+    }
+
+    public RouteFile(String filename, String contentType, byte[] bytes) {
+    }
+
     public String getRouteFileName() {
         return routeFileName;
     }
@@ -45,24 +58,11 @@ public class RouteFile {
         this.data = data;
     }
 
-    public RouteFile(UUID id, String routeFileName, String type, byte[] data) {
-        this.id = id;
-        this.routeFileName = routeFileName;
-        this.type = type;
-        this.data = data;
-    }
-
     public UUID getId() {
         return id;
     }
 
     public void setId(UUID id) {
         this.id = id;
-    }
-
-    public RouteFile() {
-    }
-
-    public RouteFile(String filename, String contentType, byte[] bytes) {
     }
 }
