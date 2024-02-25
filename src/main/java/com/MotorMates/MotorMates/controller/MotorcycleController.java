@@ -6,7 +6,6 @@ import com.MotorMates.MotorMates.repository.MotorcycleRepository;
 import com.MotorMates.MotorMates.repository.RegisteredUserRepository;
 import com.MotorMates.MotorMates.service.MotorcycleService;
 import jakarta.persistence.EntityNotFoundException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -27,7 +26,7 @@ public class MotorcycleController {
     }
 
     @GetMapping
-    public List<Motorcycle> getMotorcycle(){
+    public List<Motorcycle> getMotorcycle() {
         return motorcycleService.getMotorcycles();
     }
 
@@ -40,7 +39,7 @@ public class MotorcycleController {
     Motorcycle pairMotorcycleToRegisteredUser(
             @PathVariable Long motorcycleId,
             @PathVariable Long registeredUserId
-    ){
+    ) {
         Optional<Motorcycle> motorcycleOptional = motorcycleRepository.findById(motorcycleId);
         Optional<RegisteredUser> registeredUserOptional = registeredUserRepository.findById(registeredUserId);
 
@@ -51,8 +50,6 @@ public class MotorcycleController {
             return motorcycleRepository.save(motorcycle);
         } else {
             // Handle the case when either Motorcycle or RegisteredUser is not found
-            // You can throw an exception, return an appropriate response, or handle it according to your needs.
-            // For example:
             throw new EntityNotFoundException("Motorcycle or RegisteredUser not found");
         }
     }

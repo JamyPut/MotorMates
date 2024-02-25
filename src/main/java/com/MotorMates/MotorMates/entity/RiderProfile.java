@@ -2,7 +2,6 @@ package com.MotorMates.MotorMates.entity;
 
 import jakarta.persistence.*;
 
-
 import static jakarta.persistence.GenerationType.SEQUENCE;
 
 @Entity(name = "RiderProfile")
@@ -66,7 +65,8 @@ public class RiderProfile {
         setTypeOfRider(typeOfRider);
         setTotalDistance(totalDistance);
     }
-    public RiderProfile(){
+
+    public RiderProfile() {
 
     }
 

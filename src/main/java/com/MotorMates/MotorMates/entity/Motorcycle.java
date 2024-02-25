@@ -55,13 +55,16 @@ public class Motorcycle {
     public Long getId() {
         return id;
     }
-    public String getBrand(){
+
+    public String getBrand() {
         return brand;
     }
-    public String getModel(){
+
+    public String getModel() {
         return model;
     }
-    public int getYear(){
+
+    public int getYear() {
         return year;
     }
 
@@ -72,6 +75,7 @@ public class Motorcycle {
     public void setId(Long id) {
         this.id = id;
     }
+
     public void setBrand(String brand) {
         this.brand = brand;
     }
@@ -94,6 +98,7 @@ public class Motorcycle {
         setYear(year);
         setDisplacement(displacement);
     }
+
     public Motorcycle() {
 
     }

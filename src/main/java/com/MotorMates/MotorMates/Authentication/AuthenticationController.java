@@ -1,46 +1,44 @@
 package com.MotorMates.MotorMates.Authentication;
 
-import com.MotorMates.MotorMates.entity.RegisteredUser;
-import com.MotorMates.MotorMates.repository.RegisteredUserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/forum/auth")
 @RequiredArgsConstructor
- class AuthenticationController {
+class AuthenticationController {
 
-   private final AuthenticationService service;
+    private final AuthenticationService service;
 
-   @PostMapping("/registerUser")
+    @PostMapping("/registerUser")
     public ResponseEntity<AuthenticationResponse> registerUser(
             @RequestBody RegisterRequest request
-    ){
-      return ResponseEntity.ok(service.registerUser(request));
+    ) {
+        return ResponseEntity.ok(service.registerUser(request));
     }
 
     @PostMapping("/registerOrganizer")
     public ResponseEntity<AuthenticationResponse> registerOrganizer(
             @RequestBody RegisterRequest request
-    ){
+    ) {
         return ResponseEntity.ok(service.registerOrganizer(request));
     }
 
     @PostMapping("/registerAdmin")
     public ResponseEntity<AuthenticationResponse> registerAdmin(
             @RequestBody RegisterRequest request
-    ){
+    ) {
         return ResponseEntity.ok(service.registerAdmin(request));
     }
 
     @PostMapping("/authenticate")
     public ResponseEntity<AuthenticationResponse> authenticate(
             @RequestBody AuthenticationRequest request
-    ){
-      return ResponseEntity.ok(service.authenticate(request));
+    ) {
+        return ResponseEntity.ok(service.authenticate(request));
     }
 }

@@ -35,10 +35,9 @@ public class AuthenticationService {
                 .findByLoginEmail(request.getLoginMail());
         Optional<RegisteredUser> userByLoginName = registeredUserRepository
                 .findByLoginName(request.getLoginName());
-        if (userByEmail.isPresent()){
+        if (userByEmail.isPresent()) {
             throw new IllegalStateException("User email already exists...");
-        }
-        else if (userByLoginName.isPresent()){
+        } else if (userByLoginName.isPresent()) {
             throw new IllegalStateException("Username already exists...");
         }
     }

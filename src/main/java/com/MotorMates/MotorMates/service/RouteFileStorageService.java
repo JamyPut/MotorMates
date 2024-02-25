@@ -19,7 +19,7 @@ public class RouteFileStorageService {
     @Autowired
     private RouteFileRepository routeFileRepository;
 
-    public void storeRouteFile(MultipartFile file) throws IOException{
+    public void storeRouteFile(MultipartFile file) throws IOException {
         String filename = StringUtils.cleanPath(Objects.requireNonNull(file.getOriginalFilename()));
         RouteFile routeFile = new RouteFile(filename, file.getContentType(), file.getBytes());
         routeFileRepository.save(routeFile);
@@ -29,7 +29,7 @@ public class RouteFileStorageService {
         return routeFileRepository.findById(id).get();
     }
 
-    public Stream<RouteFile> getAllRouteFiles(){
+    public Stream<RouteFile> getAllRouteFiles() {
         Spliterator<RouteFile> spliterator = routeFileRepository.findAll().spliterator();
         return StreamSupport.stream(spliterator, false);
     }

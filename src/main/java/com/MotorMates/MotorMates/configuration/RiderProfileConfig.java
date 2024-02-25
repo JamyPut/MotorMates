@@ -12,7 +12,7 @@ import java.util.List;
 public class RiderProfileConfig {
 
     @Bean
-    CommandLineRunner commandLineRunner(RiderProfileRepository repository){
+    CommandLineRunner commandLineRunner(RiderProfileRepository repository) {
         return args -> {
             RiderProfile riderProfile1 = new RiderProfile(
                     "Racer",

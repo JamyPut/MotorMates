@@ -15,11 +15,11 @@ public class EventService {
         this.eventRepository = eventRepository;
     }
 
-    public List<Event> getEvent(){
+    public List<Event> getEvent() {
         return eventRepository.findAll();
     }
 
-    public void addNewEvent(Event event){
+    public void addNewEvent(Event event) {
         eventRepository.save(event);
     }
 }

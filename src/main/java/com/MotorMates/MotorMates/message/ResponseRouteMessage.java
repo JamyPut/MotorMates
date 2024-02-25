@@ -1,6 +1,5 @@
 package com.MotorMates.MotorMates.message;
 
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 

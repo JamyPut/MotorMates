@@ -25,7 +25,7 @@ public class RouteFileController {
     private RouteFileStorageService storageService;
 
     @PostMapping("/routes/upload")
-    public ResponseEntity<ResponseRouteMessage> uploadFile(@RequestParam("file")MultipartFile file) {
+    public ResponseEntity<ResponseRouteMessage> uploadFile(@RequestParam("file") MultipartFile file) {
         String message = "";
         try {
             storageService.storeRouteFile(file);
@@ -39,7 +39,7 @@ public class RouteFileController {
     }
 
     @GetMapping("/routes")
-    public ResponseEntity<List<ResponseRouteFile>> getListFiles(){
+    public ResponseEntity<List<ResponseRouteFile>> getListFiles() {
         List<ResponseRouteFile> files = storageService.getAllRouteFiles().map(routeFile -> {
             String routeFileDownloadUri = ServletUriComponentsBuilder
                     .fromCurrentContextPath()

@@ -1,8 +1,9 @@
 package com.MotorMates.MotorMates.entity;
 
-import jakarta.persistence.*;
-import lombok.*;
-import org.hibernate.annotations.GenericGenerator;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Lob;
+import jakarta.persistence.Table;
 import org.hibernate.annotations.UuidGenerator;
 
 import java.util.UUID;

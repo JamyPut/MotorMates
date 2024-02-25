@@ -3,12 +3,14 @@ package com.MotorMates.MotorMates.controller;
 import com.MotorMates.MotorMates.entity.Event;
 import com.MotorMates.MotorMates.service.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/forum/events")
+@PreAuthorize("hasRole('ORGANIZER')")
 public class EventController {
 
     private final EventService eventService;
@@ -19,7 +21,7 @@ public class EventController {
     }
 
     @GetMapping
-    public List<Event> getEvent(){
+    public List<Event> getEvent() {
         return eventService.getEvent();
     }
 

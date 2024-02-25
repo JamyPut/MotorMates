@@ -23,5 +23,7 @@ public class AdminGetUserList {
 
     @GetMapping("/admin/registeredUsers")
     @PreAuthorize("hasRole('ADMIN')")
-    List<RegisteredUser> getRegisteredUsers(){return repository.findAll();}
+    List<RegisteredUser> getRegisteredUsers() {
+        return repository.findAll();
+    }
 }
