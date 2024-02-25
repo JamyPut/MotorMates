@@ -54,7 +54,13 @@ spring.datasource.password=postgres123
 spring.jpa.hibernate.ddl-auto=create-drop
 spring.jpa.show-sql=true
 spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
+spring.jpa.properties.hibernate.jdbc.lob.non_contextual_creation= true
 spring.jpa.properties.hibernate.format_sql=true
+
+spring.servlet.multipart.max-file-size=5MB
+spring.servlet.multipart.max-request-size=5MB
+
+server.error.include-message=always
 ***
 
 Maak met deze gegevens een datasource aan in Intellij waarmee de verbinding met een postgress database kan worden gelegd  
