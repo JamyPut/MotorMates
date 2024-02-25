@@ -40,8 +40,12 @@ public class RegisteredUser implements UserDetails {
     @Enumerated(EnumType.STRING)
     private Role role;
 
+    public Set<Motorcycle> getMotorcycles() {
+        return motorcycles;
+    }
+
     @JsonIgnore
-    @OneToMany(mappedBy = "motorcycle")
+    @OneToMany(mappedBy = "registeredUser")
     private Set<Motorcycle> motorcycles = new HashSet<>();
 
     @Override

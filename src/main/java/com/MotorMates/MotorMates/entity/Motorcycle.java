@@ -113,4 +113,8 @@ public class Motorcycle {
                 ", displacement=" + displacement +
                 '}';
     }
+
+    public void pairToRegisteredUser(RegisteredUser registeredUser) {
+        this.registeredUser = registeredUser;
+    }
 }
