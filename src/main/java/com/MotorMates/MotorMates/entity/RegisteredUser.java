@@ -46,12 +46,9 @@ public class RegisteredUser implements UserDetails {
     @OneToMany(mappedBy = "registeredUser")
     private Set<Motorcycle> motorcycles = new HashSet<>();
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "rider_profile_id")
-
-    public Set<Motorcycle> getMotorcycles() {
-        return motorcycles;
-    }
+//    @OneToOne
+//    @PrimaryKeyJoinColumn
+//    private RiderProfile riderProfile;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

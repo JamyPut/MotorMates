@@ -1,6 +1,7 @@
 package com.MotorMates.MotorMates.controller;
 
 import com.MotorMates.MotorMates.entity.RegisteredUser;
+import com.MotorMates.MotorMates.entity.RiderProfile;
 import com.MotorMates.MotorMates.repository.RegisteredUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,8 +16,14 @@ public class RegisteredUserProfileController {
     @Autowired
     private RegisteredUserRepository registeredUserRepository;
 
-    @PostMapping("/storeRiderProfile")
-    public RegisteredUser storeRiderProfile(@RequestBody RegisteredUser registeredUser) {
-        return registeredUserRepository.save(registeredUser);
-    }
+//    @PostMapping("/storeRiderProfile")
+//    public RegisteredUser storeRiderProfile(@RequestBody RegisteredUser registeredUser) {
+//        RiderProfile riderProfile = registeredUser.getRiderProfile();
+//
+//        if (riderProfile != null) {
+//            riderProfile.setRegisteredUser(registeredUser);
+//        }
+//
+//        return registeredUserRepository.save(registeredUser);
+//    }
 }

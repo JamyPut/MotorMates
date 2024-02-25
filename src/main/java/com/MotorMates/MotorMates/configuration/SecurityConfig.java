@@ -26,7 +26,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests()
                 .requestMatchers("/forum/auth/**")
                 .permitAll()
-                .requestMatchers("/forum/riderprofile", "/forum/riderprofile/**", "/forum/routes", "/forum/routes/**", "/forum/events", "/forum/motorcycle").hasAnyAuthority("RIDER", "ADMIN", "ORGANIZER")
+                .requestMatchers("/forum/riderprofile", "/forum/riderprofile/**", "/forum/routes", "/forum/routes/**", "/forum/events", "/forum/motorcycle", "/forum/motorcycle/**").hasAnyAuthority("RIDER", "ADMIN", "ORGANIZER")
                 .requestMatchers("/forum/events/create").hasAuthority("ORGANIZER")
                 .requestMatchers("/forum/admin/registeredUsers").hasAuthority("ADMIN")
                 .and()

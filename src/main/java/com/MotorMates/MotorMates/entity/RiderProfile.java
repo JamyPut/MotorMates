@@ -36,6 +36,11 @@ public class RiderProfile {
     )
     private double totalDistance;
 
+//    @OneToOne(mappedBy = "riderProfile", cascade = CascadeType.ALL)
+//    @JoinColumn(name = "rider_profile_id")
+//    @MapsId
+//    private RegisteredUser registeredUser;
+
     public RiderProfile(String typeOfRider, double totalDistance) {
         setTypeOfRider(typeOfRider);
         setTotalDistance(totalDistance);
@@ -77,4 +82,7 @@ public class RiderProfile {
                 ", totalDistance=" + totalDistance +
                 '}';
     }
+
+//    public void setRegisteredUser(RegisteredUser registeredUser) {
+//    }
 }
