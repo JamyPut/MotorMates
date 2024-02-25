@@ -10,7 +10,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/forum/events")
-@PreAuthorize("hasRole('ORGANIZER')")
 public class EventController {
 
     private final EventService eventService;
@@ -25,7 +24,7 @@ public class EventController {
         return eventService.getEvent();
     }
 
-    @PostMapping
+    @PostMapping("/create")
     public void newEvent(@RequestBody Event event) {
         eventService.addNewEvent(event);
     }

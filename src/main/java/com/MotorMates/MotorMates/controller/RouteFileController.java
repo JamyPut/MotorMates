@@ -16,9 +16,8 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Controller
-@RestController("/forum")
-@CrossOrigin("http://localhost:8080")
+@RestController
+@RequestMapping("/forum")
 public class RouteFileController {
 
     @Autowired
@@ -40,19 +39,22 @@ public class RouteFileController {
 
     @GetMapping("/routes")
     public ResponseEntity<List<ResponseRouteFile>> getListFiles() {
-        List<ResponseRouteFile> files = storageService.getAllRouteFiles().map(routeFile -> {
-            String routeFileDownloadUri = ServletUriComponentsBuilder
-                    .fromCurrentContextPath()
-                    .path("/routes")
-                    .path(String.valueOf(routeFile.getId()))
-                    .toUriString();
+        List<ResponseRouteFile> files = storageService.getAllRouteFiles()
+                .filter(routeFile -> routeFile.getData() != null) // Add null check here
+                .map(routeFile -> {
+                    String routeFileDownloadUri = ServletUriComponentsBuilder
+                            .fromCurrentContextPath()
+                            .path("/routes")
+                            .path(String.valueOf(routeFile.getId()))
+                            .toUriString();
 
-            return new ResponseRouteFile(
-                    routeFile.getRouteFileName(),
-                    routeFileDownloadUri,
-                    routeFile.getType(),
-                    routeFile.getData().length);
-        }).collect(Collectors.toList());
+                    return new ResponseRouteFile(
+                            routeFile.getRouteFileName(),
+                            routeFileDownloadUri,
+                            routeFile.getType(),
+                            routeFile.getData().length);
+                })
+                .collect(Collectors.toList());
 
         return ResponseEntity.status(HttpStatus.OK).body(files);
     }
