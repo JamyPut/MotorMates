@@ -43,6 +43,9 @@ public class RegisteredUser implements UserDetails {
     @Enumerated(EnumType.STRING)
     private Role role;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "rider_profile_id")
+
     public Set<Motorcycle> getMotorcycles() {
         return motorcycles;
     }
